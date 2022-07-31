@@ -30,7 +30,7 @@ export const getExtensions = ({
   return [
     // Necessary
     Document,
-    // DraggableBlock,
+    DraggableBlock,
     Paragraph,
     Text,
     DropCursor.configure({
