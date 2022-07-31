@@ -1,9 +1,12 @@
-import { Mark, markPasteRule, mergeAttributes } from "@tiptap/core";
+import { Node, markPasteRule, mergeAttributes } from "@tiptap/core";
+import { ReactNodeViewRenderer } from "@tiptap/react";
 import { find, registerCustomProtocol } from "linkifyjs";
 
 import { autolink } from "./helpers/autolink";
 import { clickHandler } from "./helpers/clickHandler";
 import { pasteHandler } from "./helpers/pasteHandler";
+
+import { LinkView } from "./LinkView";
 
 export interface LinkOptions {
   /**
@@ -57,12 +60,18 @@ declare module "@tiptap/core" {
   }
 }
 
-export const Link = Mark.create<LinkOptions>({
+export const Link = Node.create<LinkOptions>({
   name: "link",
 
   priority: 1000,
 
   keepOnSplit: false,
+
+  group: "inline",
+
+  inline: true,
+
+  content: "inline*",
 
   onCreate() {
     this.options.protocols.forEach(registerCustomProtocol);
@@ -118,58 +127,71 @@ export const Link = Mark.create<LinkOptions>({
     return {
       setLink:
         (attributes) =>
-        ({ chain }) => {
+        ({ chain, state }) => {
+          const {
+            selection: { from, to },
+            doc,
+          } = state;
+
+          const text = doc.textBetween(from, to);
+
           return chain()
-            .setMark(this.name, attributes)
+            .insertContent({
+              type: "link",
+              attrs: attributes,
+              content: [
+                {
+                  type: "text",
+                  text,
+                },
+              ],
+            })
             .setMeta("preventAutolink", true)
             .run();
         },
 
       toggleLink:
-        (attributes) =>
-        ({ chain }) => {
-          return chain()
-            .toggleMark(this.name, attributes, { extendEmptyMarkRange: true })
-            .setMeta("preventAutolink", true)
-            .run();
-        },
-
-      unsetLink:
         () =>
         ({ chain }) => {
-          return chain()
-            .unsetMark(this.name, { extendEmptyMarkRange: true })
-            .setMeta("preventAutolink", true)
-            .run();
+          return chain().toggleNode(this.name, "text").run();
         },
+
+      // unsetLink:
+      //   () =>
+      //   ({ chain }) => {
+      //     return chain()
+      //       .clear(this.name, { extendEmptyMarkRange: true })
+      //       .setMeta("preventAutolink", true)
+      //       .run();
+      //   },
     };
   },
 
-  addPasteRules() {
-    return [
-      markPasteRule({
-        find: (text) =>
-          find(text)
-            .filter((link) => {
-              if (this.options.validate) {
-                return this.options.validate(link.value);
-              }
+  // addPasteRules() {
+  //   return [
+  //     nodePasteRule({
+  //       find: (text) =>
+  //         find(text)
+  //           .filter((link) => {
+  //             if (this.options.validate) {
+  //               return this.options.validate(link.value);
+  //             }
 
-              return true;
-            })
-            .filter((link) => link.isLink)
-            .map((link) => ({
-              text: link.value,
-              index: link.start,
-              data: link,
-            })),
-        type: this.type,
-        getAttributes: (match) => ({
-          href: match.data?.href,
-        }),
-      }),
-    ];
-  },
+  //             return true;
+  //           })
+  //           .filter((link) => link.isLink)
+  //           .map((link) => ({
+  //             text: link.value,
+  //             index: link.start,
+  //             data: link,
+  //           })),
+  //       type: this.type,
+  //       getAttributes: (match) => ({
+  //         href: match.data?.href,
+  //       }),
+  //     }),
+  //   ];
+  // },
 
   addKeyboardShortcuts() {
     return {
@@ -180,35 +202,39 @@ export const Link = Mark.create<LinkOptions>({
     };
   },
 
-  addProseMirrorPlugins() {
-    const plugins = [];
+  // addProseMirrorPlugins() {
+  //   const plugins = [];
 
-    if (this.options.autolink) {
-      plugins.push(
-        autolink({
-          type: this.type,
-          validate: this.options.validate,
-        })
-      );
-    }
+  //   if (this.options.autolink) {
+  //     plugins.push(
+  //       autolink({
+  //         type: this.type,
+  //         validate: this.options.validate,
+  //       })
+  //     );
+  //   }
 
-    if (this.options.openOnClick) {
-      plugins.push(
-        clickHandler({
-          type: this.type,
-        })
-      );
-    }
+  //   if (this.options.openOnClick) {
+  //     plugins.push(
+  //       clickHandler({
+  //         type: this.type,
+  //       })
+  //     );
+  //   }
 
-    if (this.options.linkOnPaste) {
-      plugins.push(
-        pasteHandler({
-          editor: this.editor,
-          type: this.type,
-        })
-      );
-    }
+  //   if (this.options.linkOnPaste) {
+  //     plugins.push(
+  //       pasteHandler({
+  //         editor: this.editor,
+  //         type: this.type,
+  //       })
+  //     );
+  //   }
 
-    return plugins;
+  //   return plugins;
+  // },
+
+  addNodeView() {
+    return ReactNodeViewRenderer(LinkView);
   },
 });

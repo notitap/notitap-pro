@@ -69,6 +69,7 @@ export const Tiptap = () => {
 
   const addTable = () => editor?.commands.insertTable({ rows: 3, cols: 3, withHeaderRow: true })
 
+  const addLink = () => editor?.commands.setLink({ href: 'https://github.com'})
 
   return (
     editor && (
@@ -95,13 +96,20 @@ export const Tiptap = () => {
           >
             Add table
           </button>
+          <button
+            className="btn btn-sm btn-outline"
+            type="button"
+            onClick={() => addLink()}
+          >
+            Add Link
+          </button>
         </span>
 
         <EditorContent className="w-full flex justify-center" editor={editor} />
 
         <CustomBubbleMenu editor={editor} />
 
-        <LinkBubbleMenu editor={editor} />
+        {/* <LinkBubbleMenu editor={editor} /> */}
       </section>
     )
   );
