@@ -2,11 +2,23 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "draggable-block-tiptap-draggable-block": "packages/draggable-block/tiptap-draggable-block",
+    "draggable-block-tiptap-draggable-block-angular": "packages/draggable-block/tiptap-draggable-block-angular",
+    "draggable-block-tiptap-draggable-block-react": "packages/draggable-block/tiptap-draggable-block-react",
+    "draggable-block-tiptap-draggable-block-vue": "packages/draggable-block/tiptap-draggable-block-vue",
+    "media-resize-tiptap-media-resize": "packages/media-resize/tiptap-media-resize",
+    "media-resize-tiptap-media-resize-angular": "packages/media-resize/tiptap-media-resize-angular",
+    "media-resize-tiptap-media-resize-react": "packages/media-resize/tiptap-media-resize-react",
+    "media-resize-tiptap-media-resize-vue": "packages/media-resize/tiptap-media-resize-vue",
     "notitap-pro-angular": "apps/notitap-pro-angular",
     "notitap-pro-angular-e2e": "apps/notitap-pro-angular-e2e",
     "notitap-pro-react": "apps/notitap-pro-react",
     "notitap-pro-react-e2e": "apps/notitap-pro-react-e2e",
     "notitap-pro-vue": "apps/notitap-pro-vue",
-    "notitap-pro-vue-e2e": "apps/notitap-pro-vue-e2e"
+    "notitap-pro-vue-e2e": "apps/notitap-pro-vue-e2e",
+    "supercharged-table-tiptap-supercharged-table": "packages/supercharged-table/tiptap-supercharged-table",
+    "supercharged-table-tiptap-supercharged-table-vue": "packages/supercharged-table/tiptap-supercharged-table-vue",
+    "supercharged-table-tiptap-supercharget-table-angular": "packages/supercharged-table/tiptap-supercharget-table-angular",
+    "supercharged-table-tiptap-supercharget-table-react": "packages/supercharged-table/tiptap-supercharget-table-react"
   }
 }

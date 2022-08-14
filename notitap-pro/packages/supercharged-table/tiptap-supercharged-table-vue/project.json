@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/supercharged-table/tiptap-supercharged-table-vue/src",
+  "targets": {
+    "build": {
+      "executor": "@nx-plus/vue:library",
+      "options": {
+        "dest": "dist/packages/supercharged-table/tiptap-supercharged-table-vue",
+        "entry": "packages/supercharged-table/tiptap-supercharged-table-vue/src/index.ts",
+        "tsConfig": "packages/supercharged-table/tiptap-supercharged-table-vue/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/supercharged-table/tiptap-supercharged-table-vue/**/*.{ts,tsx,vue}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/packages/supercharged-table/tiptap-supercharged-table-vue"
+      ],
+      "options": {
+        "jestConfig": "packages/supercharged-table/tiptap-supercharged-table-vue/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["framework:vue"]
+}

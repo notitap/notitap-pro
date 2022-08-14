@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/supercharged-table/tiptap-supercharged-table/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/supercharged-table/tiptap-supercharged-table",
+        "main": "packages/supercharged-table/tiptap-supercharged-table/src/index.ts",
+        "tsConfig": "packages/supercharged-table/tiptap-supercharged-table/tsconfig.lib.json",
+        "assets": ["packages/supercharged-table/tiptap-supercharged-table/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/supercharged-table/tiptap-supercharged-table/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/packages/supercharged-table/tiptap-supercharged-table"
+      ],
+      "options": {
+        "jestConfig": "packages/supercharged-table/tiptap-supercharged-table/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["framework:shared"]
+}

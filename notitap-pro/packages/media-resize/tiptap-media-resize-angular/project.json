@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "packages/media-resize/tiptap-media-resize-angular/src",
+  "prefix": "notitap-pro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/media-resize/tiptap-media-resize-angular"],
+      "options": {
+        "project": "packages/media-resize/tiptap-media-resize-angular/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/media-resize/tiptap-media-resize-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/media-resize/tiptap-media-resize-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/media-resize/tiptap-media-resize-angular"],
+      "options": {
+        "jestConfig": "packages/media-resize/tiptap-media-resize-angular/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/media-resize/tiptap-media-resize-angular/**/*.ts",
+          "packages/media-resize/tiptap-media-resize-angular/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["framework:angular"]
+}

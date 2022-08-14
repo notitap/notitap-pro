@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/media-resize/tiptap-media-resize/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/media-resize/tiptap-media-resize",
+        "main": "packages/media-resize/tiptap-media-resize/src/index.ts",
+        "tsConfig": "packages/media-resize/tiptap-media-resize/tsconfig.lib.json",
+        "assets": ["packages/media-resize/tiptap-media-resize/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/media-resize/tiptap-media-resize/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/media-resize/tiptap-media-resize"],
+      "options": {
+        "jestConfig": "packages/media-resize/tiptap-media-resize/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["framework:shared"]
+}

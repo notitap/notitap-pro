@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/supercharged-table/tiptap-supercharget-table-react/src",
+  "projectType": "library",
+  "tags": ["framework:react"],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/supercharged-table/tiptap-supercharget-table-react",
+        "tsConfig": "packages/supercharged-table/tiptap-supercharget-table-react/tsconfig.lib.json",
+        "project": "packages/supercharged-table/tiptap-supercharget-table-react/package.json",
+        "entryFile": "packages/supercharged-table/tiptap-supercharget-table-react/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "packages/supercharged-table/tiptap-supercharget-table-react/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/supercharged-table/tiptap-supercharget-table-react/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/packages/supercharged-table/tiptap-supercharget-table-react"
+      ],
+      "options": {
+        "jestConfig": "packages/supercharged-table/tiptap-supercharget-table-react/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

@@ -14,7 +14,44 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@notitap-pro/draggable-block/tiptap-draggable-block": [
+        "packages/draggable-block/tiptap-draggable-block/src/index.ts"
+      ],
+      "@notitap-pro/draggable-block/tiptap-draggable-block-vue": [
+        "packages/draggable-block/tiptap-draggable-block-vue/src/index.ts"
+      ],
+      "@notitap-pro/media-resize/tiptap-media-resize": [
+        "packages/media-resize/tiptap-media-resize/src/index.ts"
+      ],
+      "@notitap-pro/media-resize/tiptap-media-resize-vue": [
+        "packages/media-resize/tiptap-media-resize-vue/src/index.ts"
+      ],
+      "@notitap-pro/supercharged-table/tiptap-supercharged-table": [
+        "packages/supercharged-table/tiptap-supercharged-table/src/index.ts"
+      ],
+      "@notitap-pro/supercharged-table/tiptap-supercharged-table-vue": [
+        "packages/supercharged-table/tiptap-supercharged-table-vue/src/index.ts"
+      ],
+      "tiptap-draggable-block-angular": [
+        "packages/draggable-block/tiptap-draggable-block-angular/src/index.ts"
+      ],
+      "tiptap-draggable-block-react": [
+        "packages/draggable-block/tiptap-draggable-block-react/src/index.ts"
+      ],
+      "tiptap-media-resize-angular": [
+        "packages/media-resize/tiptap-media-resize-angular/src/index.ts"
+      ],
+      "tiptap-media-resize-react": [
+        "packages/media-resize/tiptap-media-resize-react/src/index.ts"
+      ],
+      "tiptap-supercharget-table-angular": [
+        "packages/supercharged-table/tiptap-supercharget-table-angular/src/index.ts"
+      ],
+      "tiptap-supercharget-table-react": [
+        "packages/supercharged-table/tiptap-supercharget-table-react/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
