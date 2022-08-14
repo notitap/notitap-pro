@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "notitap-pro-angular": "apps/notitap-pro-angular",
+    "notitap-pro-angular-e2e": "apps/notitap-pro-angular-e2e",
+    "notitap-pro-react": "apps/notitap-pro-react",
+    "notitap-pro-react-e2e": "apps/notitap-pro-react-e2e",
+    "notitap-pro-vue": "apps/notitap-pro-vue",
+    "notitap-pro-vue-e2e": "apps/notitap-pro-vue-e2e"
+  }
+}
