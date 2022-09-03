@@ -1,0 +1,45 @@
+{
+  "projectType": "library",
+  "sourceRoot": "packages/supercharged-table/tiptap-supercharget-table-angular/src",
+  "prefix": "notitap-pro",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": [
+        "dist/packages/supercharged-table/tiptap-supercharget-table-angular"
+      ],
+      "options": {
+        "project": "packages/supercharged-table/tiptap-supercharget-table-angular/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/supercharged-table/tiptap-supercharget-table-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/supercharged-table/tiptap-supercharget-table-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/packages/supercharged-table/tiptap-supercharget-table-angular"
+      ],
+      "options": {
+        "jestConfig": "packages/supercharged-table/tiptap-supercharget-table-angular/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "packages/supercharged-table/tiptap-supercharget-table-angular/**/*.ts",
+          "packages/supercharged-table/tiptap-supercharget-table-angular/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["framework:angular"]
+}

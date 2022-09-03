@@ -1,0 +1,47 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/draggable-block/tiptap-draggable-block-react/src",
+  "projectType": "library",
+  "tags": ["framework:react"],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/draggable-block/tiptap-draggable-block-react",
+        "tsConfig": "packages/draggable-block/tiptap-draggable-block-react/tsconfig.lib.json",
+        "project": "packages/draggable-block/tiptap-draggable-block-react/package.json",
+        "entryFile": "packages/draggable-block/tiptap-draggable-block-react/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "packages/draggable-block/tiptap-draggable-block-react/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/draggable-block/tiptap-draggable-block-react/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/packages/draggable-block/tiptap-draggable-block-react"
+      ],
+      "options": {
+        "jestConfig": "packages/draggable-block/tiptap-draggable-block-react/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

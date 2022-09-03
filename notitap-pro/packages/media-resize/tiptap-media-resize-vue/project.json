@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/media-resize/tiptap-media-resize-vue/src",
+  "targets": {
+    "build": {
+      "executor": "@nx-plus/vue:library",
+      "options": {
+        "dest": "dist/packages/media-resize/tiptap-media-resize-vue",
+        "entry": "packages/media-resize/tiptap-media-resize-vue/src/index.ts",
+        "tsConfig": "packages/media-resize/tiptap-media-resize-vue/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/media-resize/tiptap-media-resize-vue/**/*.{ts,tsx,vue}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/media-resize/tiptap-media-resize-vue"],
+      "options": {
+        "jestConfig": "packages/media-resize/tiptap-media-resize-vue/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["framework:vue"]
+}

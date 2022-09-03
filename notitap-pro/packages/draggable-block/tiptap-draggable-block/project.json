@@ -1,0 +1,35 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/draggable-block/tiptap-draggable-block/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/draggable-block/tiptap-draggable-block",
+        "main": "packages/draggable-block/tiptap-draggable-block/src/index.ts",
+        "tsConfig": "packages/draggable-block/tiptap-draggable-block/tsconfig.lib.json",
+        "assets": ["packages/draggable-block/tiptap-draggable-block/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/draggable-block/tiptap-draggable-block/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/draggable-block/tiptap-draggable-block"],
+      "options": {
+        "jestConfig": "packages/draggable-block/tiptap-draggable-block/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["framework:shared"]
+}

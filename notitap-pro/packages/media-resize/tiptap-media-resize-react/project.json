@@ -1,0 +1,45 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/media-resize/tiptap-media-resize-react/src",
+  "projectType": "library",
+  "tags": ["framework:react"],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/media-resize/tiptap-media-resize-react",
+        "tsConfig": "packages/media-resize/tiptap-media-resize-react/tsconfig.lib.json",
+        "project": "packages/media-resize/tiptap-media-resize-react/package.json",
+        "entryFile": "packages/media-resize/tiptap-media-resize-react/src/index.ts",
+        "external": ["react/jsx-runtime"],
+        "rollupConfig": "@nrwl/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "packages/media-resize/tiptap-media-resize-react/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/media-resize/tiptap-media-resize-react/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/media-resize/tiptap-media-resize-react"],
+      "options": {
+        "jestConfig": "packages/media-resize/tiptap-media-resize-react/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
